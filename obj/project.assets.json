@@ -1,0 +1,66 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "net8.0": []
+  },
+  "packageFolders": {
+    "C:\\Users\\S-Ved\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\S-Ved\\OneDrive\\GA\\C#\\Abstract_Classes_And_Interfaces\\Assignment5_IkeaProducts\\Assignment5_IkeaProducts.csproj",
+      "projectName": "Assignment5_IkeaProducts",
+      "projectPath": "C:\\Users\\S-Ved\\OneDrive\\GA\\C#\\Abstract_Classes_And_Interfaces\\Assignment5_IkeaProducts\\Assignment5_IkeaProducts.csproj",
+      "packagesPath": "C:\\Users\\S-Ved\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\S-Ved\\OneDrive\\GA\\C#\\Abstract_Classes_And_Interfaces\\Assignment5_IkeaProducts\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\S-Ved\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Users\\S-Ved\\.dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

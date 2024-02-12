@@ -1,0 +1,14 @@
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\bin\Debug\net8.0\Assignment5_IkeaProducts.exe
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\bin\Debug\net8.0\Assignment5_IkeaProducts.deps.json
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\bin\Debug\net8.0\Assignment5_IkeaProducts.runtimeconfig.json
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\bin\Debug\net8.0\Assignment5_IkeaProducts.dll
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\bin\Debug\net8.0\Assignment5_IkeaProducts.pdb
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\obj\Debug\net8.0\Assignment5_IkeaProducts.GeneratedMSBuildEditorConfig.editorconfig
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\obj\Debug\net8.0\Assignment5_IkeaProducts.AssemblyInfoInputs.cache
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\obj\Debug\net8.0\Assignment5_IkeaProducts.AssemblyInfo.cs
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\obj\Debug\net8.0\Assignment5_IkeaProducts.csproj.CoreCompileInputs.cache
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\obj\Debug\net8.0\Assignment5_IkeaProducts.dll
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\obj\Debug\net8.0\refint\Assignment5_IkeaProducts.dll
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\obj\Debug\net8.0\Assignment5_IkeaProducts.pdb
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\obj\Debug\net8.0\Assignment5_IkeaProducts.genruntimeconfig.cache
+F:\OneDrive\GA\C#\Abstract_Classes_And_Interfaces\Assignment5_IkeaProducts\obj\Debug\net8.0\ref\Assignment5_IkeaProducts.dll
