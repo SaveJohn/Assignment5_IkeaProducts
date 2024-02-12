@@ -28,35 +28,26 @@ public class Program
             String userInput = Console.ReadLine();
             int option;
 
-            if (int.TryParse(userInput, out option))
+            if (int.TryParse(userInput, out option)) //Checking input value
             {
-                if (!menu.ContainsKey(option))
+                if (!menu.ContainsKey(option)) // Checking if option is in menu
                 {
                     Console.WriteLine($"Option {option} is not in the menu. Please try again.");
                     Console.WriteLine("Press enter for menu...");
                     Console.ReadLine();
                     continue;
                 }
-                if (menu.TryGetValue(option, out var optionValues))
+
+                if (menu[option].Item1 == "Exit") // Exit
                 {
-                    var description = optionValues.Item1; // Extract the description from the tuple
-                    if (description == "Exit")
-                    {
-                        break;
-                    }
-                    if (optionValues.Item2 != null) // Check if the function is not null
-                    {
-                        optionValues.Item2.Invoke();
-                        Console.WriteLine("Press enter for menu...");
-                        Console.ReadLine();
-                    }
+                    Console.WriteLine("Exiting program. Bye!");
+                    break;
                 }
-                else
-                {
-                    Console.WriteLine($"Invalid option. Please try again.");
-                    Console.WriteLine("Press enter for menu...");
-                    Console.ReadLine();
-                }
+                
+                // Menu options with functions to evoke
+                menu[option].Item2.Invoke();
+                Console.WriteLine("Press enter for menu...");
+                Console.ReadLine();
             }
             else
             {
@@ -67,7 +58,7 @@ public class Program
         }
     }
     
-    public static Dictionary<int, (string, MyFunction)> GetMenu()
+    private static Dictionary<int, (string, MyFunction)> GetMenu()
     {
         // Getting all the products:
         List<Product> products = GetAllProducts();
@@ -85,9 +76,9 @@ public class Program
 
         return menu;
     }
-
-
+    
     // Getting a list of all the products:
+
     public static List<Product> GetAllProducts()
     {
         List<Product> products = new List<Product>();
@@ -106,8 +97,9 @@ public class Program
 
         return products;
     }
-    
+
     //Getting all products along with it's information:
+
     public static void GetProductsInformation(List<Product>products)
     {
         // Product information:
@@ -162,8 +154,9 @@ public class Program
         }
         Console.WriteLine(productInformation);
     }
-    
+
     // Get a single product and it's information:
+
     public static string GetProductInformation(Product product)
     {
         // Product information:
@@ -220,6 +213,7 @@ public class Program
 
     // Getting all products connected to one of the following interfaces:
     // Assemblable
+
     public static void GetAssemblableProducts(List<Product>products)
     {
         String assemblableProducts = $"{titleMarker("Assemblable Products:")} \n \n";
@@ -233,7 +227,7 @@ public class Program
         }
         Console.WriteLine(assemblableProducts);
     }
-    
+
     public static void GetBathRoomProducts(List<Product>products)
     {
         String bathRoomProducts = $"{titleMarker("Bath Room Products:")} \n \n";
@@ -247,7 +241,7 @@ public class Program
 
         Console.WriteLine(bathRoomProducts);
     }
-    
+
     public static void GetBedRoomProducts(List<Product>products)
     {
         String bedRoomProducts = $"{titleMarker("Bed Room Products:")} \n \n";
@@ -261,7 +255,7 @@ public class Program
 
         Console.WriteLine(bedRoomProducts);
     }
-    
+
     public static void GetKitchenProducts(List<Product>products)
     {
         String kitchenProducts = $"{titleMarker("Kitchen Products:")} \n \n";
@@ -275,7 +269,7 @@ public class Program
 
         Console.WriteLine(kitchenProducts);
     }
-    
+
     public static void GetLivingRoomProducts(List<Product>products)
     {
         String livingRoomProducts = $"{titleMarker("Living Room Products:")} \n \n";
@@ -288,8 +282,8 @@ public class Program
         }
         Console.WriteLine(livingRoomProducts);
     }
-    
-    
+
+
     public static void GetOfficeProducts(List<Product>products)
     {
         String officeProducts = $"{titleMarker("Office Products:")} \n \n";
@@ -315,8 +309,9 @@ public class Program
         }
         Console.WriteLine(allAroundProducts);
     }
-    
+
     // A function to underline a title (product name and more):
+
     public static String titleMarker(String product)
     {
         String title = $"{product.ToUpper()} \n";
