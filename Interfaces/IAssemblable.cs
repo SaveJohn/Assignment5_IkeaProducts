@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Assignment5_IkeaProducts;
+﻿namespace Abstract_Classes_And_Interfaces.Interfaces;
 
 public interface IAssemblable
 {

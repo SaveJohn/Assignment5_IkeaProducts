@@ -1,4 +1,6 @@
-﻿namespace Assignment5_IkeaProducts.Products;
+﻿using Abstract_Classes_And_Interfaces.Interfaces;
+
+namespace Abstract_Classes_And_Interfaces.Products;
 
 public class KitchenCounter: Product, IKitchen, IAssemblable
 {
@@ -6,6 +8,11 @@ public class KitchenCounter: Product, IKitchen, IAssemblable
         : base("wooden kitchen counter", 550f, "002.127.75", 
             "A stylish wooden kitchen counter")
     {
+    }
+    
+    public override String ProductName()
+    {
+        return productName;
     }
 
     public override float Price()
@@ -23,7 +30,7 @@ public class KitchenCounter: Product, IKitchen, IAssemblable
         return description;
     }
 
-    public string kitchen()
+    public string Kitchen()
     {
         return $"This {productName} is the perfect choice to pimp up you kitchen space.";
     }

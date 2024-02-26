@@ -1,4 +1,6 @@
-﻿namespace Assignment5_IkeaProducts.Products;
+﻿using Abstract_Classes_And_Interfaces.Interfaces;
+
+namespace Abstract_Classes_And_Interfaces.Products;
 
 public class QueensBed: Product, IBedRoom, IAssemblable
 {
@@ -6,6 +8,11 @@ public class QueensBed: Product, IBedRoom, IAssemblable
         : base("queens bed", 6999.20f, "601.000.68", 
             "A comfortable queen sized bed, for \"couples\" and \"singles\" alike.")
     {
+    }
+    
+    public override String ProductName()
+    {
+        return productName;
     }
 
     public override float Price()

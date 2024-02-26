@@ -1,23 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Runtime.InteropServices.JavaScript;
-using Assignment5_IkeaProducts.Products;
+﻿using System.Text;
+using Abstract_Classes_And_Interfaces.Products;
+using Abstract_Classes_And_Interfaces.Interfaces;
 
-namespace Assignment5_IkeaProducts;
+namespace Abstract_Classes_And_Interfaces;
 
 public class Program
 {
-    public delegate void MyFunction();
+    private delegate void MenuFunction();
     
     // Main program code:
     public static void Main(string[] args)
     {
-        Dictionary<int, (string, MyFunction)> menu = GetMenu();
+        Dictionary<int, (string, MenuFunction)> menu = GetMenu();
         
         while (true)
         {
             // Printing out menu options:
-            Console.WriteLine(titleMarker("List out information of:"));
+            Console.WriteLine(TitleMarker("List out information of:"));
             foreach (var item in menu)
             {
                 Console.WriteLine($"{item.Key}). {item.Value.Item1}");
@@ -25,61 +24,60 @@ public class Program
             
             // User input to choose option:
             Console.WriteLine("Enter your choice by typing in the option number:");
-            String userInput = Console.ReadLine();
-            int option;
+            string? userInput = Console.ReadLine();
+            
 
-            if (int.TryParse(userInput, out option)) //Checking input value
-            {
-                if (!menu.ContainsKey(option)) // Checking if option is in menu
-                {
-                    Console.WriteLine($"Option {option} is not in the menu. Please try again.");
-                    Console.WriteLine("Press enter for menu...");
-                    Console.ReadLine();
-                    continue;
-                }
-
-                if (menu[option].Item1 == "Exit") // Exit
-                {
-                    Console.WriteLine("Exiting program. Bye!");
-                    break;
-                }
-                
-                // Menu options with functions to evoke
-                menu[option].Item2.Invoke();
-                Console.WriteLine("Press enter for menu...");
-                Console.ReadLine();
-            }
-            else
+            if (!int.TryParse(userInput, out int option)) //Checking input value
             {
                 Console.WriteLine($"Invalid option. Please try again.");
                 Console.WriteLine("Press enter for menu...");
                 Console.ReadLine();
+                continue;
             }
+            if (!menu.ContainsKey(option)) // Checking if option is in menu
+            {
+                Console.WriteLine($"Option {option} is not in the menu. Please try again.");
+                Console.WriteLine("Press enter for menu...");
+                Console.ReadLine();
+                continue;
+            }
+
+            if (menu[option].Item1 == "Exit") // Exit
+            {
+                Console.WriteLine("Exiting program. Bye!");
+                break;
+            }
+                
+            // Menu options with functions to invoke
+            menu[option].Item2.Invoke();
+            Console.WriteLine("Press enter for menu...");
+            Console.ReadLine();
         }
     }
     
-    private static Dictionary<int, (string, MyFunction)> GetMenu()
+    private static Dictionary<int, (string, MenuFunction)> GetMenu()
     {
         // Getting all the products:
         List<Product> products = GetAllProducts();
 
         // Menu option <description, function>
-        Dictionary<int, (string, MyFunction)> menu = new Dictionary<int, (string, MyFunction)>();
-        menu.Add(1, ("All products", () => GetProductsInformation(products)));
-        menu.Add(2, ("Bath room products", () => GetBathRoomProducts(products)));
-        menu.Add(3, ("Bed room products", () => GetBedRoomProducts(products)));
-        menu.Add(4, ("Kitchen products", () => GetKitchenProducts(products)));
-        menu.Add(5, ("Living room products", () => GetLivingRoomProducts(products)));
-        menu.Add(6, ("Office products", () => GetOfficeProducts(products)));
-        menu.Add(7, ("All around products", () => GetAllAroundProducts(products)));
-        menu.Add(8, ("Exit", null));
+        Dictionary<int, (string, MenuFunction)> menu = new Dictionary<int, (string, MenuFunction)>();
+        menu.Add(1, ("All products", () => GetAllProductsInformation(products)));
+        menu.Add(2, ("Bath room products", () => GetInterfaceProducts<IBathRoom>(products, "Bath Room Products")));
+        menu.Add(3, ("Bed room products", () => GetInterfaceProducts<IBedRoom>(products, "Bed Room Products")));
+        menu.Add(4, ("Kitchen products", () => GetInterfaceProducts<IKitchen>(products, "Kitchen Products")));
+        menu.Add(5, ("Living room products", () => GetInterfaceProducts<ILivingRoom>(products, "Living Room Products")));
+        menu.Add(6, ("Office products", () => GetInterfaceProducts<IOffice>(products, "Office Products")));
+        menu.Add(7, ("All around products", () => GetInterfaceProducts<IAllAround>(products, "All Around Products")));
+        menu.Add(8, ("Assemblable products", () => GetInterfaceProducts<IAssemblable>(products, "Assemblable Products")));
+        menu.Add(9, ("Exit", null)!);
 
         return menu;
     }
     
     // Getting a list of all the products:
 
-    public static List<Product> GetAllProducts()
+    private static List<Product> GetAllProducts()
     {
         List<Product> products = new List<Product>();
         
@@ -100,219 +98,66 @@ public class Program
 
     //Getting all products along with it's information:
 
-    public static void GetProductsInformation(List<Product>products)
+    private static void GetAllProductsInformation(List<Product>products)
     {
         // Product information:
-        String productInformation = "";
+        StringBuilder productInformation = new StringBuilder();
 
         foreach (Product product in products)
         {
-
-            // Product along with it's attributes:
-            productInformation += $"{titleMarker(product.ProductName)}: \n" +
-                                  $"- Price: {product.Price()} \n" +
-                                  $"- Description: {product.Description()} \n" +
-                                  $"- Shelf: {product.GetShelf()} \n";
-
-            // Including interface attributes when they are relevant:
-            if (product is IAssemblable) // Assemblable 
-            {
-                productInformation +=  $"- {((IAssemblable)product).Assemble()} \n";
-            }
-
-            if (product is IBathRoom) // Bath Room
-            {
-                productInformation += $"- {((IBathRoom)product).BathRoom()} \n";
-            }
-
-            if (product is IBedRoom) // Bed Room
-            {
-                productInformation += $"- {((IBedRoom)product).BedRoom()} \n";
-            }
-
-            if (product is IKitchen) // Kitchen
-            {
-                productInformation += $"- {((IKitchen)product).kitchen()} \n";
-            }
-
-            if (product is ILivingRoom) // Living Room
-            {
-                productInformation += $"- {((ILivingRoom)product).LivingRoom()} \n";
-            }
-
-            if (product is IOffice) // Office
-            {
-                productInformation += $"- {((IOffice)product).Office()} \n";
-            }
-
-            if (product is IAllAround) // All Around
-            {
-                productInformation += $"- {((IAllAround)product).AllAround()} \n";
-            }
-            
-            productInformation += "\n";
+            productInformation.AppendLine(GetProductInformation(product));
         }
         Console.WriteLine(productInformation);
     }
 
     // Get a single product and it's information:
 
-    public static string GetProductInformation(Product product)
+    private static string GetProductInformation(Product product)
     {
+        StringBuilder productInformation = new StringBuilder();
+
         // Product information:
-        String productInformation = "";
+        productInformation.AppendLine($"{TitleMarker(product.ProductName())}:")
+            .AppendLine($"- Price: {product.Price()}")
+            .AppendLine($"- Description: {product.Description()}")
+            .AppendLine($"- Shelf: {product.GetShelf()}");
+    
+        // Check for each interface and append if implemented
+        if (product is IAssemblable assemblable)
+            productInformation.AppendLine($"- {assemblable.Assemble()}");
+        if (product is IBathRoom bathRoom)
+            productInformation.AppendLine($"- {bathRoom.BathRoom()}");
+        if (product is IBedRoom bedRoom)
+            productInformation.AppendLine($"- {bedRoom.BedRoom()}");
+        if (product is IKitchen kitchen)
+            productInformation.AppendLine($"- {kitchen.Kitchen()}");
+        if (product is ILivingRoom livingRoom)
+            productInformation.AppendLine($"- {livingRoom.LivingRoom()}");
+        if (product is IOffice office)
+            productInformation.AppendLine($"- {office.Office()}");
+        if (product is IAllAround allAround)
+            productInformation.AppendLine($"- {allAround.AllAround()}");
 
-        
-
-        // Product along with it's attributes:
-        productInformation += $"{titleMarker(product.ProductName)}: \n" +
-                              $"- Price: {product.Price()} \n" +
-                              $"- Description: {product.Description()} \n" +
-                              $"- Shelf: {product.GetShelf()} \n";
-
-        // Including interface attributes when they are relevant:
-        if (product is IAssemblable) // Assemblable 
-        {
-            productInformation +=  $"- {((IAssemblable)product).Assemble()} \n";
-        }
-
-        if (product is IBathRoom) // Bath Room
-        {
-            productInformation += $"- {((IBathRoom)product).BathRoom()} \n";
-        }
-
-        if (product is IBedRoom) // Bed Room
-        {
-            productInformation += $"- {((IBedRoom)product).BedRoom()} \n";
-        }
-
-        if (product is IKitchen) // Kitchen
-        {
-            productInformation += $"- {((IKitchen)product).kitchen()} \n";
-        }
-
-        if (product is ILivingRoom) // Living Room
-        {
-            productInformation += $"- {((ILivingRoom)product).LivingRoom()} \n";
-        }
-
-        if (product is IOffice) // Office
-        {
-            productInformation += $"- {((IOffice)product).Office()} \n";
-        }
-
-        if (product is IAllAround) // All Around
-        {
-            productInformation += $"- {((IAllAround)product).AllAround()} \n";
-        }
-        
-        productInformation += "\n";
-        
-        return productInformation;
+        productInformation.AppendLine(); // Space
+    
+        return productInformation.ToString();
     }
-
-    // Getting all products connected to one of the following interfaces:
-    // Assemblable
-
-    public static void GetAssemblableProducts(List<Product>products)
+    
+    private static void GetInterfaceProducts<TInterface>(List<Product> products, string title)
     {
-        String assemblableProducts = $"{titleMarker("Assemblable Products:")} \n \n";
-        foreach (Product product in products)
+        StringBuilder interfaceProducts = new StringBuilder($"{TitleMarker(title)}:\n\n");
+        foreach (var product in products)
         {
-            if (product is IAssemblable assemblableProduct)
+            if (product is TInterface)
             {
-                assemblableProducts += $"- {GetProductInformation(product)}\n";
-                
+                interfaceProducts.AppendLine($"- {GetProductInformation(product)}");
             }
         }
-        Console.WriteLine(assemblableProducts);
-    }
-
-    public static void GetBathRoomProducts(List<Product>products)
-    {
-        String bathRoomProducts = $"{titleMarker("Bath Room Products:")} \n \n";
-        foreach (Product product in products)
-        {
-            if (product is IBathRoom bathRoomProduct)
-            {
-                bathRoomProducts += $"- {GetProductInformation(product)} \n";
-            }
-        }
-
-        Console.WriteLine(bathRoomProducts);
-    }
-
-    public static void GetBedRoomProducts(List<Product>products)
-    {
-        String bedRoomProducts = $"{titleMarker("Bed Room Products:")} \n \n";
-        foreach (Product product in products)
-        {
-            if (product is IBedRoom bedRoomProduct)
-            {
-                bedRoomProducts += $"- {GetProductInformation(product)} \n";
-            }
-        }
-
-        Console.WriteLine(bedRoomProducts);
-    }
-
-    public static void GetKitchenProducts(List<Product>products)
-    {
-        String kitchenProducts = $"{titleMarker("Kitchen Products:")} \n \n";
-        foreach (Product product in products)
-        {
-            if (product is IKitchen kitchenProduct)
-            {
-                kitchenProducts += $"- {GetProductInformation(product)} \n";
-            }
-        }
-
-        Console.WriteLine(kitchenProducts);
-    }
-
-    public static void GetLivingRoomProducts(List<Product>products)
-    {
-        String livingRoomProducts = $"{titleMarker("Living Room Products:")} \n \n";
-        foreach (Product product in products)
-        {
-            if (product is ILivingRoom livingRoomProduct)
-            {
-                livingRoomProducts += $"- {GetProductInformation(product)} \n";
-            }
-        }
-        Console.WriteLine(livingRoomProducts);
-    }
-
-
-    public static void GetOfficeProducts(List<Product>products)
-    {
-        String officeProducts = $"{titleMarker("Office Products:")} \n \n";
-        foreach (Product product in products)
-        {
-            if (product is IOffice officeProduct)
-            {
-                officeProducts += $"- {GetProductInformation(product)} \n";
-            }
-        }
-        Console.WriteLine(officeProducts);
-    }
-
-    public static void GetAllAroundProducts(List<Product> products)
-    {
-        String allAroundProducts = $"{titleMarker("All Around Products:")} \n \n";
-        foreach (Product product in products)
-        {
-            if (product is IAllAround allAroundProduct)
-            {
-                allAroundProducts += $"- {GetProductInformation(product)} \n";
-            }
-        }
-        Console.WriteLine(allAroundProducts);
+        Console.WriteLine(interfaceProducts);
     }
 
     // A function to underline a title (product name and more):
-
-    public static String titleMarker(String product)
+    private static String TitleMarker(String product)
     {
         String title = $"{product.ToUpper()} \n";
         int length = product.Length;

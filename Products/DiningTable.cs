@@ -1,4 +1,6 @@
-﻿namespace Assignment5_IkeaProducts.Products;
+﻿using Abstract_Classes_And_Interfaces.Interfaces;
+
+namespace Abstract_Classes_And_Interfaces.Products;
 
 public class DiningTable: Product, IKitchen, ILivingRoom, IAssemblable
 {
@@ -7,6 +9,11 @@ public class DiningTable: Product, IKitchen, ILivingRoom, IAssemblable
                                               "meals more social.")
     {
         
+    }
+    
+    public override String ProductName()
+    {
+        return productName;
     }
 
     public override float Price()
@@ -24,7 +31,7 @@ public class DiningTable: Product, IKitchen, ILivingRoom, IAssemblable
         return description;
     }
     
-    public string kitchen()
+    public string Kitchen()
     {
         return $"The {productName} is the perfect table to for your kitchen.";
     }

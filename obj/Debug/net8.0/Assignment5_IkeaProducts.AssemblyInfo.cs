@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Assignment5_IkeaProducts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f871d2e02c8c001745446df027a325a0e5599e5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+495790c104d75cd3f8c9fe83f2431fecd79b828c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Assignment5_IkeaProducts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Assignment5_IkeaProducts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

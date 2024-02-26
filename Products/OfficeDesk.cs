@@ -1,4 +1,6 @@
-﻿namespace Assignment5_IkeaProducts.Products;
+﻿using Abstract_Classes_And_Interfaces.Interfaces;
+
+namespace Abstract_Classes_And_Interfaces.Products;
 
 public class OfficeDesk: Product, IOffice, ILivingRoom, IBedRoom, IAssemblable
 {
@@ -6,6 +8,11 @@ public class OfficeDesk: Product, IOffice, ILivingRoom, IBedRoom, IAssemblable
         : base("office desk", 1305.79f, "952.062.10", 
             "A basic desk for office purposes.")
     {
+    }
+    
+    public override String ProductName()
+    {
+        return productName;
     }
 
     public override float Price()
@@ -31,13 +38,13 @@ public class OfficeDesk: Product, IOffice, ILivingRoom, IBedRoom, IAssemblable
     public string LivingRoom()
     {
         return $"If you prefer to work somewhere more social, the {productName} surly be used `n" +
-               $"on a living room area.";
+               $"   in a living room area.";
     }
 
     public string BedRoom()
     {
         return $"If you lack a private space such as an office, the bedroom would be a natural choice for your \n" +
-               $"{productName}.";
+               $"   {productName}.";
     }
 
     public string Assemble()

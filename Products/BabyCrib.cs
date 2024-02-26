@@ -1,10 +1,17 @@
-﻿namespace Assignment5_IkeaProducts.Products;
+﻿using Abstract_Classes_And_Interfaces.Interfaces;
+
+namespace Abstract_Classes_And_Interfaces.Products;
 public class BabyCrib: Product, IBedRoom, ILivingRoom, IAssemblable
 {
     public BabyCrib()
     : base ("baby crib", 4699.99f, "703.767.21", "The perfect first bed for your new born.")
     {
         
+    }
+    
+    public override String ProductName()
+    {
+        return productName;
     }
 
     public override float Price()
@@ -30,7 +37,7 @@ public class BabyCrib: Product, IBedRoom, ILivingRoom, IAssemblable
     public String LivingRoom()
     {
         return $"The {productName} may also be a great addition to your living room if you wish to keep your baby close \n " +
-               $"during the baby's daytime naps.";
+               $"   during the baby's daytime naps.";
     }
 
     public String Assemble()

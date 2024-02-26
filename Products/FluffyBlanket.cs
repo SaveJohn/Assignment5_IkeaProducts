@@ -1,10 +1,17 @@
-﻿namespace Assignment5_IkeaProducts.Products;
+﻿using Abstract_Classes_And_Interfaces.Interfaces;
+
+namespace Abstract_Classes_And_Interfaces.Products;
 
 public class FluffyBlanket: Product, ILivingRoom, IBedRoom
 {
     public FluffyBlanket() 
         : base("fluffy blanket", 99.80f, "101.002.55", "A very comfortable blanket.")
     {
+    }
+    
+    public override String ProductName()
+    {
+        return productName;
     }
 
     public override float Price()

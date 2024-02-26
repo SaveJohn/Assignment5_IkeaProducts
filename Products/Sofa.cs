@@ -1,4 +1,6 @@
-﻿namespace Assignment5_IkeaProducts.Products;
+﻿using Abstract_Classes_And_Interfaces.Interfaces;
+
+namespace Abstract_Classes_And_Interfaces.Products;
 
 public class Sofa: Product, ILivingRoom, IAssemblable
 {
@@ -6,6 +8,11 @@ public class Sofa: Product, ILivingRoom, IAssemblable
         : base("sofa", 999f, "332.461.25", 
             "A simple and modest, yet comfortable, sofa")
     {
+    }
+    
+    public override String ProductName()
+    {
+        return productName;
     }
 
     public override float Price()

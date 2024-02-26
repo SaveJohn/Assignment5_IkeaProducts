@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\OneDrive\\GA\\C#\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces.csproj": {}
+    "C:\\Users\\S-Ved\\OneDrive\\GA\\C#\\Assignment5_IkeaProducts\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces.csproj": {}
   },
   "projects": {
-    "F:\\OneDrive\\GA\\C#\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces.csproj": {
+    "C:\\Users\\S-Ved\\OneDrive\\GA\\C#\\Assignment5_IkeaProducts\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\OneDrive\\GA\\C#\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces.csproj",
+        "projectUniqueName": "C:\\Users\\S-Ved\\OneDrive\\GA\\C#\\Assignment5_IkeaProducts\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces.csproj",
         "projectName": "Abstract_Classes_And_Interfaces",
-        "projectPath": "F:\\OneDrive\\GA\\C#\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces.csproj",
+        "projectPath": "C:\\Users\\S-Ved\\OneDrive\\GA\\C#\\Assignment5_IkeaProducts\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces.csproj",
         "packagesPath": "C:\\Users\\S-Ved\\.nuget\\packages\\",
-        "outputPath": "F:\\OneDrive\\GA\\C#\\Abstract_Classes_And_Interfaces\\Abstract_Classes_And_Interfaces\\obj\\",
+        "outputPath": "C:\\Users\\S-Ved\\OneDrive\\GA\\C#\\Assignment5_IkeaProducts\\Abstract_Classes_And_Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\S-Ved\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\S-Ved\\.dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
